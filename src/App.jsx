@@ -5,11 +5,23 @@ import Questions from './Questions'
 
 const App = () => {
   const [questions, setQuestions] = useState(data)
-  const [isExpand, setIsExpand] = useState(false)
+  const [activeId, setActiveId] = useState(null)
+
+  const toggleQuestion = (id) => {
+    if (id === activeId) {
+      setActiveId(!id)
+    } else {
+      setActiveId(id)
+    }
+  }
 
   return (
     <main>
-      <Questions questions={questions} />
+      <Questions
+        questions={questions}
+        activeId={activeId}
+        toggleQuestion={toggleQuestion}
+      />
     </main>
   )
 }
